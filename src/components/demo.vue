@@ -1,6 +1,6 @@
 <template>
   <div id="shoppingCart">
-    <!--<mt-checklist 
+    <!--<mt-checklist
         v-model="value"
         :options="shoppingList">
     </mt-checklist>-->
@@ -17,7 +17,7 @@
           @click="allCheckedFn($event)"
         />
       </li>
-      <li>商品</li>
+      <li>商品1</li>
       <li>数量</li>
       <li>单价</li>
       <li>编辑</li>
@@ -134,7 +134,7 @@ export default {
           that.allPriceMoney();
         },500)
 
-      
+
     },
     // 全选
     allCheckedFn(e) {
@@ -146,19 +146,19 @@ export default {
              this.allPriceMoney();
           },500)
         });
-        
+
         }else{
           this.shoppingList.forEach((item, index) => {
           item.sonChecked = false;
           setTimeout(function(){
           this.allPriceMoney();
         },500)
-         
+
         });
         }
-      
-        
-      
+
+
+
     },
     // 总价和总数量
    allPriceMoney(){
@@ -172,21 +172,21 @@ export default {
         if(list[i].sonChecked){
            price += list[i].num*list[i].price
            numb += list[i].num
-        } 
+        }
         // 总价
         this.allPrice = price
         // 总数量
         this.totalNum = numb
-        
+
       }
 
     },
 
-    
-     
+
+
     //删除
     del(index){
-      
+
        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -197,13 +197,13 @@ export default {
           this.$message({
             type: 'success',
             message: '删除成功!'
-            
+
           });
         }).catch(() => {
           this.$message({
             type: 'info',
             message: '已取消删除'
-          });          
+          });
         });
 
     },
@@ -223,7 +223,7 @@ export default {
         setTimeout(()=>{
              this.allPriceMoney();
           },500)
-     
+
     },
     // 减
     reduce(index) {
