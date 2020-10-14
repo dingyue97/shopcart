@@ -17,7 +17,7 @@
           @click="allCheckedFn($event)"
         />
       </li>
-      <li>商品1</li>
+      <li>商品</li>
       <li>数量</li>
       <li>单价</li>
       <li>编辑</li>
@@ -87,7 +87,7 @@ export default {
           id: 2,
           shoppingName: "香蕉",
           num: 1,
-          price: 13.01,
+          price: 13,
           sonChecked: false,
           warehouseNum:7
         },
@@ -95,7 +95,7 @@ export default {
           id: 3,
           shoppingName: "葡萄",
           num: 1,
-          price: 14.35,
+          price: 14,
           sonChecked: false,
           warehouseNum:6
         },
@@ -103,7 +103,7 @@ export default {
           id: 4,
           shoppingName: "提子",
           num: 1,
-          price: 15.24,
+          price: 15,
           sonChecked: false,
           warehouseNum:8
         },
@@ -276,5 +276,8 @@ a {
   display: flex;
   justify-content: space-around;
   margin-top:20px;
+}
+.sonSelect{
+  margin:0px;
 }
 </style>

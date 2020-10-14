@@ -13,12 +13,14 @@
 <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
   <el-submenu index="1">
     <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title" >购物车</span>
+    <div>
+      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+    </div>
+      <span slot="title" ></span>
     </template>
     <el-menu-item-group>
-      <el-menu-item index="1-1" @click="shopping">购物车计算</el-menu-item>
-      <el-menu-item index="1-2" @click="eaches">图表</el-menu-item>
+      <el-menu-item index="1-1" @click="shopping">水果购物车</el-menu-item>
+      <el-menu-item index="1-2" @click="eaches">水果价格表</el-menu-item>
     </el-menu-item-group>
   </el-submenu>
 
