@@ -63,15 +63,16 @@ html,body{
   margin:0;
 }
 .el-header{
-  background-color: #ccc;
+  background-color: #2F9680;
   margin-top:-60px;
   line-height:60px;
   display: flex;
+  color:#fff;
   justify-content:space-between;
 }
 .el-aside{
   height:655px;
-  background-color: #ddd;
+  background-color: #2F9688;
 }
 .home-container{
   height:100%;

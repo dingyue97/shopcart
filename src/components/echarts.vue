@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="body_div">
     <div>
-      <el-button type="primary" @click="toggle">{{
+      <el-button style="float:right" type="primary" @click="toggle">{{
         btn ? "图表" : "表格"
       }}</el-button>
     </div>
     <div>
-      <ul :class="['look_page', btn ? 'active_page' : 'not_active_page']">
-         <li>
-           <div id="main" style="width:600px;height:400px"></div>
+      <ul style="overflow-x:hidden;" :class="['look_page', btn ? 'active_page' : 'not_active_page']" 
+      
+      >
+         <li >
+           <div id="main" style="width:1000px;height:500px;margin:auto"></div>
          </li>
         <li class="tableList">
           <el-table :data="shoppingList" stripe style="width: 100%">
@@ -37,61 +39,81 @@ export default {
           shoppingName: "苹果",
           num: 7,
           price: 12,
+          warehouseNum:15
         },
         {
           id: 2,
           shoppingName: "香蕉",
           num: 40,
           price: 15,
+          warehouseNum:28
         },
         {
           id: 3,
           shoppingName: "葡萄",
           num: 30,
           price: 30,
-        },
-        {
-          id: 4,
-          shoppingName: "提子",
-          num: 8,
-          price: 20,
+          warehouseNum:6
         },
       ],
     };
   },
-//   mounted:{
-//     option = {
-//     legend: {},
-//     tooltip: {},
-//     dataset: {
-//         dimensions: ['product', '2015', '2016', '2017'],
-//         source: [
-//             {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
-//             {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
-//             {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
-//             {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
-//         ]
-//     },
-//     xAxis: {type: 'category'},
-//     yAxis: {},
-//     // Declare several bar series, each will be mapped
-//     // to a column of dataset.source by default.
-//     series: [
-//         {type: 'bar'},
-//         {type: 'bar'},
-//         {type: 'bar'}
-//     ]
-// },
+  mounted(){
+    var myChart = echarts.init(document.getElementById('main'));
+    var  option = {
+    legend: {},
+    tooltip: {},
+    dataset: {
+        dimensions: ['product', '苹果', '香蕉', '葡萄'],
+        source: [
+            {product: '第一天', '苹果': 43.3, '香蕉': 85.8, '葡萄': 93.7},
+            {product: '第二天', '苹果': 83.1, '香蕉': 73.4, '葡萄': 55.1},
+            {product: '第三天', '苹果': 86.4, '香蕉': 65.2, '葡萄': 82.5},
+        ]
+    },
+       xAxis: [
+        {
+            type: 'category',
+            axisTick: {show: false},
+            // data: []
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    // Declare several bar series, each will be mapped
+    // to a column of dataset.source by default.
+    series: [
+        {type: 'bar'},
+        {type: 'bar'},
+        {type: 'bar'}
+    ]
+};
 
-  // },
+myChart.setOption(option);
+
+  },
+  created(){
+    // this. echartsTable()
+  },
   methods: {
     toggle() {
       this.btn = !this.btn;
     },
+    // echartsTable(){
+    //             this.option.xAxis.data = this.shoppingList.map((item,index)=>{
+    //               return item.shoppingName;
+    //             })
+    // }
   },
-};
+}
 </script>
 <style scoped>
+body{
+overflow-x:hidden; 
+}
 ul > li {
   list-style: none;
 }
@@ -117,6 +139,10 @@ ul > li {
   transition: all 1s ease-in-out;
 }
 .tableList{
-  padding:20px 40px;
+  padding:100px 40px;
+
 }
+/* .body_div{
+  scroll:none;
+} */
 </style>
