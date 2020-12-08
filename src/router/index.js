@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import demo from '@/components/demo.vue'
 import echarts from '@/components/echarts.vue'
+import time from '@/components/time.vue'
 
 
 Vue.use(Router)
@@ -24,6 +25,8 @@ export default new Router({
         
         },{
           path: '/echarts',component: echarts,
+        },{
+          path: '/time',component: time,
         }
       ]
     }
