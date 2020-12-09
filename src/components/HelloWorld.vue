@@ -34,7 +34,7 @@
                   >水果价格表</el-menu-item
                 >
                 <el-menu-item index="1-3" @click="time"
-                  >优惠倒计时</el-menu-item
+                  >倒计时</el-menu-item
                 >
               </el-menu-item-group>
             </el-submenu>
@@ -97,4 +97,5 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
 </style>

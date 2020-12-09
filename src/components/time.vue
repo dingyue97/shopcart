@@ -11,20 +11,22 @@
 export default {
   data() {
     return {
-      hour: 6,
+      hours: 6,
       minutes: 0,
       seconds: 0,
-      createTimes: [],
+      createTimes:[],
       endTimes:[],
+      NowTime:[],
       dateTime: [
-        { createTime: "2020-12-08 15:11:38", endTime: "2020-12-08 21:11:38" },
+        { createTime: "2020-12-09 15:11:38",
+          endTime: "2020-12-09 21:11:38" },
         {
-          createTime: "2020-12-08 14:31:28",
-          endTime: "2020-12-08 20:31:28",
+          createTime: "2020-12-09 14:31:28",
+          endTime: "2020-12-10 20:31:28",
         },
         {
-          createTime: "2020-12-08 13:38:25",
-          endTime: "2020-12-08 19:38:25",
+          createTime: "2020-12-09 13:38:25",
+          endTime: "2020-12-10 19:38:25",
         },
       ],
     };
@@ -74,6 +76,12 @@ export default {
       this.endTimes.push(this.dateTime.map((item)=>{
           return item.endTime;
       }))
+     
+      for(let i =0;i<this.createTimes[0].length;i++){
+       let date =(new Date(this.endTimes[0][i])-new Date()) 
+      console.log(date)
+      }
+    
     },
     add() {
       var _this = this;
