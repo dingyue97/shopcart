@@ -14,12 +14,9 @@ export default {
       hours: 6,
       minutes: 0,
       seconds: 0,
-      createTimes:[],
-      endTimes:[],
-      NowTime:[],
       dateTime: [
-        { createTime: "2020-12-09 15:11:38",
-          endTime: "2020-12-09 21:11:38" },
+        { createTime: "2020-12-10 15:11:38",
+          endTime: "2020-12-10 21:11:38" },
         {
           createTime: "2020-12-09 14:31:28",
           endTime: "2020-12-10 20:31:28",
@@ -33,7 +30,6 @@ export default {
   },
   mounted() {
     this.add();
-    this.timer();
   },
   watch: {
     hour: {
@@ -66,22 +62,6 @@ export default {
   methods: {
     num: function (n) {
       return n < 10 ? "0" + n : "" + n;
-    },
-    timer() {
-      this.createTimes.push(
-        this.dateTime.map((item) => {
-          return item.createTime;
-        })
-      );
-      this.endTimes.push(this.dateTime.map((item)=>{
-          return item.endTime;
-      }))
-     
-      for(let i =0;i<this.createTimes[0].length;i++){
-       let date =(new Date(this.endTimes[0][i])-new Date()) 
-      console.log(date)
-      }
-    
     },
     add() {
       var _this = this;

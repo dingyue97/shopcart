@@ -36,6 +36,9 @@
                 <el-menu-item index="1-3" @click="time"
                   >倒计时</el-menu-item
                 >
+                 <el-menu-item index="1-4" @click="timer"
+                  >优惠倒计时</el-menu-item
+                >
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
@@ -55,7 +58,7 @@ export default {
   methods: {
     // 侧边栏菜单的折叠与展开
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
@@ -70,6 +73,9 @@ export default {
     time() {
       this.$router.push("/time");
     },
+    timer(){
+      this.$router.push("/shoppingTime");
+    }
   },
 };
 </script>
