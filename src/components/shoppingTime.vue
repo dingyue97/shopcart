@@ -1,81 +1,112 @@
 <template>
-  <div>
-    <div
-      style="font-size: 65px; color: #000000; font-weight: 700; margin-top: 20%"
-    >
-      {{ hou }}小时{{ min }}分钟{{ sec }}秒{{ ssec }}
-    </div>
+  <div style="width:800px">
+
+    <el-table :data="tableData"
+      border
+      row-key="id"
+      align="left">
+     <el-table-column v-for="(item, index) in col"
+        :key="`col_${index}`"
+        :prop="dropCol[index].prop"
+        :label="item.label" 
+        > 
+      </el-table-column>
+    </el-table>
+
   </div>
 </template>
 <script>
+import Sortable from 'sortablejs'
 export default {
   data() {
     return {
-      hou: 0,
-      min: 0,
-      sec: 0,
-      ssec: 0,
-      endTime: "",
-      disprArr: [],
-      Times: [],
-      dateTime: [
-        { createTime: "2020-12-10 15:11:38", 
-        endTime: "2020-12-10 21:11:38" },
+      col: [
         {
-          createTime: "2020-12-09 14:31:28",
-          endTime: "2020-12-10 20:31:28",
+          label: '日期',
+          prop: 'date',
         },
         {
-          createTime: "2020-12-09 13:38:25",
-          endTime: "2020-12-10 19:38:25",
+          label: '姓名',
+          prop: 'name',
         },
+        {
+          label: '地址',
+          prop: 'address',
+        }
       ],
-    };
+      dropCol: [
+        {
+          label: '日期',
+          prop: 'date',
+
+        },
+        {
+          label: '姓名',
+          prop: 'name',
+        },
+        {
+          label: '地址',
+          prop: 'address',
+        }
+      ],
+      tableData: [
+        {
+          id: '1',
+          date: '2016-05-02',
+          name: '王小虎1',
+          address: '上海市普陀区金沙江路 100 弄'
+        },
+        {
+          id: '2',
+          date: '2016-05-04',
+          name: '王小虎2',
+          address: '上海市普陀区金沙江路 200 弄'
+        },
+        {
+          id: '3',
+          date: '2016-05-01',
+          name: '王小虎3',
+          address: '上海市普陀区金沙江路 300 弄'
+        },
+        {
+          id: '4',
+          date: '2016-05-03',
+          name: '王小虎4',
+          address: '上海市普陀区金沙江路 400 弄'
+        }
+      ]
+    }
   },
-  created() {
-    this.time();
+  mounted() {
+    // this.rowDrop()
+    this.columnDrop()
   },
   methods: {
-    time() {
-      let that = this;
-      for (let i = 0; i < that.dateTime.length; i++) {
-        that.Times.push(that.dateTime[i].endTime);
-      }
-              console.log(that.Times);
-      let interval = setInterval(function timestampToTime() {
-        let date = new Date(that.dateTime[0].endTime) - new Date();
-        if (date > 0) {
-          let time = date / 1000;
-          // 获取时、分、秒,毫秒
-          that.hou =
-            parseInt((time % (60 * 60 * 24)) / 3600) < 10
-              ? "0" + parseInt((time % (60 * 60 * 24)) / 3600)
-              : parseInt((time % (60 * 60 * 24)) / 3600);
-          that.min =
-            parseInt(((time % (60 * 60 * 24)) % 3600) / 60) < 10
-              ? "0" + parseInt(((time % (60 * 60 * 24)) % 3600) / 60)
-              : parseInt(((time % (60 * 60 * 24)) % 3600) / 60);
-          that.sec =
-            parseInt(((time % (60 * 60 * 24)) % 3600) % 60) < 10
-              ? "0" + parseInt(((time % (60 * 60 * 24)) % 3600) % 60)
-              : parseInt(((time % (60 * 60 * 24)) % 3600) % 60);
-          that.ssec =
-            parseInt(((date % (60 * 60 * 24)) % 3600) / 60)< 10
-              ? "0" + (parseInt(((date % (60 * 60 * 24)) % 3600) / 60) )
-              : parseInt(((date % (60 * 60 * 24)) % 3600) / 60) ;
-        } else {
-          //活动已结束，全部设置为'00'
-          // console.log("aaa")
-          (that.day = "00"),
-            (that.hou = "00"),
-            (that.min = "00"),
-            (that.sec = "00");
+    //行拖拽
+    // rowDrop() {
+    //   const tbody = document.querySelector('.el-table__body-wrapper tbody')
+    //   const _this = this
+    //   Sortable.create(tbody, {
+    //     onEnd({ newIndex, oldIndex }) {
+    //       const currRow = _this.tableData.splice(oldIndex, 1)[0]
+    //       _this.tableData.splice(newIndex, 0, currRow)
+    //     }
+    //   })
+    // },
+    //列拖拽
+    columnDrop() {
+      const wrapperTr = document.querySelector('.el-table__header-wrapper tr')
+      this.sortable = Sortable.create(wrapperTr, {
+        animation: 180,
+        delay: 0,
+        onEnd: evt => {
+          console.log(evt)
+          const oldItem = this.dropCol[evt.oldIndex]
+          this.dropCol.splice(evt.oldIndex, 1)
+          this.dropCol.splice(evt.newIndex, 0, oldItem)
         }
-        //new Date当前的时间戳，也可以换成自定义的时间戳
-      }, 100);
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
-<style >
-</style>

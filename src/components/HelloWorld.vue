@@ -6,7 +6,7 @@
         <el-aside :width="isCollapse ? '64px' : '300px'" style="height:895px">
           <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
             <!-- <i class="el-icon-arrow-right" :label="false" style="width:40px;height:40px" ></i>
-  <i class="el-icon-arrow-left" :label="true" style="width:40px;height:40px"></i> -->
+            <i class="el-icon-arrow-left" :label="true" style="width:40px;height:40px"></i>-->
             <el-radio-button :label="false">展开</el-radio-button>
             <el-radio-button :label="true">收起</el-radio-button>
           </el-radio-group>
@@ -27,23 +27,18 @@
                 <span slot="title"></span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1" @click="shopping"
-                  >水果购物车</el-menu-item
-                >
-                <el-menu-item index="1-2" @click="eaches"
-                  >水果价格表</el-menu-item
-                >
-                <el-menu-item index="1-3" @click="time"
-                  >倒计时</el-menu-item
-                >
-                 <el-menu-item index="1-4" @click="timer"
-                  >优惠倒计时</el-menu-item
-                >
+                <el-menu-item index="1-1" @click="shopping">水果购物车</el-menu-item>
+                <el-menu-item index="1-2" @click="eaches">水果价格表</el-menu-item>
+                <el-menu-item index="1-3" @click="time">倒计时</el-menu-item>
+                <el-menu-item index="1-4" @click="timer">拖拽</el-menu-item>
+                <el-menu-item index="1-5" @click="father">父子测试</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
         </el-aside>
-        <el-main><router-view></router-view></el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -52,8 +47,8 @@
 export default {
   data() {
     return {
-      isCollapse: false,
-    };
+      isCollapse: false
+    }
   },
   methods: {
     // 侧边栏菜单的折叠与展开
@@ -61,23 +56,26 @@ export default {
       // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      console.log(key, keyPath)
     },
     // 购物车页面的页面跳转
     shopping() {
-      this.$router.push("/demo");
+      this.$router.push('/demo')
     },
     eaches() {
-      this.$router.push("/echarts");
+      this.$router.push('/echarts')
     },
     time() {
-      this.$router.push("/time");
+      this.$router.push('/time')
     },
-    timer(){
-      this.$router.push("/shoppingTime");
+    timer() {
+      this.$router.push('/shoppingTime')
+    },
+    father() {
+      this.$router.push('/fatherSon')
     }
-  },
-};
+  }
+}
 </script>
 <style  scoped>
 html,
@@ -103,5 +101,4 @@ body {
   margin: 0px;
   padding: 0px;
 }
-
 </style>

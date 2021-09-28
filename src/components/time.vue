@@ -4,6 +4,7 @@
       style="font-size: 65px; color: #000000; font-weight: 700; margin-top: 20%"
     >
       {{ hour }}:{{ minute }}:{{ second }}
+      <!-- <h1>{{time}}</h1> -->
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@ export default {
       hours: 6,
       minutes: 0,
       seconds: 0,
+       
       dateTime: [
         { createTime: "2020-12-10 15:11:38",
           endTime: "2020-12-10 21:11:38" },
